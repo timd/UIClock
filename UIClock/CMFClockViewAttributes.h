@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CMFClockViewAttributes : UICollectionViewLayoutAttributes
-@property (nonatomic) UIEdgeInsets myCustomProperty;
 @property (nonatomic) CALayer *layer;
 @end

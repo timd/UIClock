@@ -12,7 +12,6 @@
 
 - (id)copyWithZone:(NSZone *)zone {
     CMFClockViewAttributes *copy = [super copyWithZone:zone];
-    copy.myCustomProperty = self.myCustomProperty;
     copy.layer = self.layer;
     return copy;
 }

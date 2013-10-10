@@ -11,6 +11,7 @@
 
 @interface CMFViewController ()
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) NSTimer *tickTimer;
 @property (nonatomic, weak) IBOutlet UILabel *timeLabel;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) CMFClockLayout *clockLayout;
@@ -24,6 +25,9 @@ static NSString *const kSecsHandCell = @"SecsHandCell";
 
 @implementation CMFViewController
 
+#pragma mark -
+#pragma mark View lifecycle methods
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -32,23 +36,36 @@ static NSString *const kSecsHandCell = @"SecsHandCell";
     [self configureCollectionView];
     [self updateClock];
     
-    // Define the timer object
-    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateClock) userInfo:nil repeats:YES];
+    // Start the timer
+    self.tickTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateClock) userInfo:nil repeats:YES];
     
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewDidUnload {
+    [super viewDidUnload];
+    [self.tickTimer invalidate];
+}
+
+#pragma mark -
+#pragma mark View rotation methods
+
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    [self.collectionView.collectionViewLayout invalidateLayout];
+    [UIView animateWithDuration:0.1f animations:^{
+        [self.collectionView setAlpha:0.0f];
+    } completion:^(BOOL finished) {
+        [self.collectionView.collectionViewLayout invalidateLayout];
+    }];
 }
 
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-//    [self.collectionView.collectionViewLayout invalidateLayout];
+    [UIView animateWithDuration:0.25f animations:^{
+        [self.collectionView setAlpha:1.0f];
+    }];
 }
 
 #pragma mark -
