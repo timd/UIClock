@@ -7,13 +7,17 @@
 //
 
 #import "CMFAppDelegate.h"
+#import "CMFViewController.h"
 
 @implementation CMFAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Override point for customization after application launch.
-    return YES;
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+        // Override point for customization after application launch.
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        CMFViewController *viewController = [[CMFViewController alloc] initWithNibName:@"CMFViewController" bundle:nil];
+        self.window.rootViewController = viewController;
+        [self.window makeKeyAndVisible];
+        return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

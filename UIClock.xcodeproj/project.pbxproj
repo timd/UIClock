@@ -13,7 +13,6 @@
 		229FA7CB1806A7D400788E00 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 229FA7C91806A7D400788E00 /* InfoPlist.strings */; };
 		229FA7CD1806A7D400788E00 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 229FA7CC1806A7D400788E00 /* main.m */; };
 		229FA7D11806A7D400788E00 /* CMFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 229FA7D01806A7D400788E00 /* CMFAppDelegate.m */; };
-		229FA7D41806A7D400788E00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 229FA7D21806A7D400788E00 /* Main.storyboard */; };
 		229FA7D71806A7D400788E00 /* CMFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 229FA7D61806A7D400788E00 /* CMFViewController.m */; };
 		229FA7D91806A7D400788E00 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 229FA7D81806A7D400788E00 /* Images.xcassets */; };
 		229FA7E01806A7D400788E00 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229FA7DF1806A7D400788E00 /* XCTest.framework */; };
@@ -21,6 +20,12 @@
 		229FA7E21806A7D400788E00 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229FA7C41806A7D400788E00 /* UIKit.framework */; };
 		229FA7EA1806A7D400788E00 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 229FA7E81806A7D400788E00 /* InfoPlist.strings */; };
 		229FA7EC1806A7D400788E00 /* UIClockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 229FA7EB1806A7D400788E00 /* UIClockTests.m */; };
+		229FA7F81806A82300788E00 /* CMFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229FA7F71806A82300788E00 /* CMFViewController.xib */; };
+		229FA7FB1806AA8C00788E00 /* CMFHourHand.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229FA7FA1806AA8C00788E00 /* CMFHourHand.xib */; };
+		229FA7FD1806AA9900788E00 /* CMFMinHand.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229FA7FC1806AA9900788E00 /* CMFMinHand.xib */; };
+		229FA7FF1806AAA600788E00 /* CMFSecondHand.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229FA7FE1806AAA600788E00 /* CMFSecondHand.xib */; };
+		229FA8011806AABB00788E00 /* CMFHourLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229FA8001806AABB00788E00 /* CMFHourLabelView.xib */; };
+		229FA8051806AC4300788E00 /* CMFClockLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 229FA8041806AC4300788E00 /* CMFClockLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +49,6 @@
 		229FA7CE1806A7D400788E00 /* UIClock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIClock-Prefix.pch"; sourceTree = "<group>"; };
 		229FA7CF1806A7D400788E00 /* CMFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMFAppDelegate.h; sourceTree = "<group>"; };
 		229FA7D01806A7D400788E00 /* CMFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMFAppDelegate.m; sourceTree = "<group>"; };
-		229FA7D31806A7D400788E00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		229FA7D51806A7D400788E00 /* CMFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMFViewController.h; sourceTree = "<group>"; };
 		229FA7D61806A7D400788E00 /* CMFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMFViewController.m; sourceTree = "<group>"; };
 		229FA7D81806A7D400788E00 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -53,6 +57,13 @@
 		229FA7E71806A7D400788E00 /* UIClockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UIClockTests-Info.plist"; sourceTree = "<group>"; };
 		229FA7E91806A7D400788E00 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		229FA7EB1806A7D400788E00 /* UIClockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIClockTests.m; sourceTree = "<group>"; };
+		229FA7F71806A82300788E00 /* CMFViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMFViewController.xib; sourceTree = "<group>"; };
+		229FA7FA1806AA8C00788E00 /* CMFHourHand.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMFHourHand.xib; sourceTree = "<group>"; };
+		229FA7FC1806AA9900788E00 /* CMFMinHand.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMFMinHand.xib; sourceTree = "<group>"; };
+		229FA7FE1806AAA600788E00 /* CMFSecondHand.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMFSecondHand.xib; sourceTree = "<group>"; };
+		229FA8001806AABB00788E00 /* CMFHourLabelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMFHourLabelView.xib; sourceTree = "<group>"; };
+		229FA8031806AC4300788E00 /* CMFClockLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMFClockLayout.h; sourceTree = "<group>"; };
+		229FA8041806AC4300788E00 /* CMFClockLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMFClockLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +123,9 @@
 		229FA7C61806A7D400788E00 /* UIClock */ = {
 			isa = PBXGroup;
 			children = (
-				229FA7CF1806A7D400788E00 /* CMFAppDelegate.h */,
-				229FA7D01806A7D400788E00 /* CMFAppDelegate.m */,
-				229FA7D21806A7D400788E00 /* Main.storyboard */,
-				229FA7D51806A7D400788E00 /* CMFViewController.h */,
-				229FA7D61806A7D400788E00 /* CMFViewController.m */,
+				229FA7F51806A7FD00788E00 /* App delegate */,
+				229FA7F61806A80800788E00 /* View controller */,
+				229FA7F91806AA5A00788E00 /* Collection views */,
 				229FA7D81806A7D400788E00 /* Images.xcassets */,
 				229FA7C71806A7D400788E00 /* Supporting Files */,
 			);
@@ -150,6 +159,46 @@
 				229FA7E81806A7D400788E00 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		229FA7F51806A7FD00788E00 /* App delegate */ = {
+			isa = PBXGroup;
+			children = (
+				229FA7CF1806A7D400788E00 /* CMFAppDelegate.h */,
+				229FA7D01806A7D400788E00 /* CMFAppDelegate.m */,
+			);
+			name = "App delegate";
+			sourceTree = "<group>";
+		};
+		229FA7F61806A80800788E00 /* View controller */ = {
+			isa = PBXGroup;
+			children = (
+				229FA7D51806A7D400788E00 /* CMFViewController.h */,
+				229FA7D61806A7D400788E00 /* CMFViewController.m */,
+				229FA7F71806A82300788E00 /* CMFViewController.xib */,
+			);
+			name = "View controller";
+			sourceTree = "<group>";
+		};
+		229FA7F91806AA5A00788E00 /* Collection views */ = {
+			isa = PBXGroup;
+			children = (
+				229FA8031806AC4300788E00 /* CMFClockLayout.h */,
+				229FA8041806AC4300788E00 /* CMFClockLayout.m */,
+				229FA8021806AC3200788E00 /* Nibs */,
+			);
+			name = "Collection views";
+			sourceTree = "<group>";
+		};
+		229FA8021806AC3200788E00 /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				229FA7FA1806AA8C00788E00 /* CMFHourHand.xib */,
+				229FA7FC1806AA9900788E00 /* CMFMinHand.xib */,
+				229FA7FE1806AAA600788E00 /* CMFSecondHand.xib */,
+				229FA8001806AABB00788E00 /* CMFHourLabelView.xib */,
+			);
+			name = Nibs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,7 +280,11 @@
 			files = (
 				229FA7D91806A7D400788E00 /* Images.xcassets in Resources */,
 				229FA7CB1806A7D400788E00 /* InfoPlist.strings in Resources */,
-				229FA7D41806A7D400788E00 /* Main.storyboard in Resources */,
+				229FA7F81806A82300788E00 /* CMFViewController.xib in Resources */,
+				229FA7FB1806AA8C00788E00 /* CMFHourHand.xib in Resources */,
+				229FA8011806AABB00788E00 /* CMFHourLabelView.xib in Resources */,
+				229FA7FD1806AA9900788E00 /* CMFMinHand.xib in Resources */,
+				229FA7FF1806AAA600788E00 /* CMFSecondHand.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +306,7 @@
 				229FA7CD1806A7D400788E00 /* main.m in Sources */,
 				229FA7D71806A7D400788E00 /* CMFViewController.m in Sources */,
 				229FA7D11806A7D400788E00 /* CMFAppDelegate.m in Sources */,
+				229FA8051806AC4300788E00 /* CMFClockLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,14 +335,6 @@
 				229FA7CA1806A7D400788E00 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		229FA7D21806A7D400788E00 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				229FA7D31806A7D400788E00 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		229FA7E81806A7D400788E00 /* InfoPlist.strings */ = {
