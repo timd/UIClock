@@ -26,6 +26,7 @@
 		229FA7FF1806AAA600788E00 /* CMFSecondHand.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229FA7FE1806AAA600788E00 /* CMFSecondHand.xib */; };
 		229FA8011806AABB00788E00 /* CMFHourLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229FA8001806AABB00788E00 /* CMFHourLabelView.xib */; };
 		229FA8051806AC4300788E00 /* CMFClockLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 229FA8041806AC4300788E00 /* CMFClockLayout.m */; };
+		229FA8081806E0BE00788E00 /* CMFClockViewAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 229FA8071806E0BE00788E00 /* CMFClockViewAttributes.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		229FA8001806AABB00788E00 /* CMFHourLabelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMFHourLabelView.xib; sourceTree = "<group>"; };
 		229FA8031806AC4300788E00 /* CMFClockLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMFClockLayout.h; sourceTree = "<group>"; };
 		229FA8041806AC4300788E00 /* CMFClockLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMFClockLayout.m; sourceTree = "<group>"; };
+		229FA8061806E0BE00788E00 /* CMFClockViewAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMFClockViewAttributes.h; sourceTree = "<group>"; };
+		229FA8071806E0BE00788E00 /* CMFClockViewAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMFClockViewAttributes.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +188,8 @@
 			children = (
 				229FA8031806AC4300788E00 /* CMFClockLayout.h */,
 				229FA8041806AC4300788E00 /* CMFClockLayout.m */,
+				229FA8061806E0BE00788E00 /* CMFClockViewAttributes.h */,
+				229FA8071806E0BE00788E00 /* CMFClockViewAttributes.m */,
 				229FA8021806AC3200788E00 /* Nibs */,
 			);
 			name = "Collection views";
@@ -304,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				229FA7CD1806A7D400788E00 /* main.m in Sources */,
+				229FA8081806E0BE00788E00 /* CMFClockViewAttributes.m in Sources */,
 				229FA7D71806A7D400788E00 /* CMFViewController.m in Sources */,
 				229FA7D11806A7D400788E00 /* CMFAppDelegate.m in Sources */,
 				229FA8051806AC4300788E00 /* CMFClockLayout.m in Sources */,

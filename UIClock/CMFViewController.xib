@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CMFViewController">
             <connections>
                 <outlet property="collectionView" destination="kbd-lx-pXk" id="AvL-rk-s0z"/>
+                <outlet property="timeLabel" destination="Fam-kZ-4dk" id="NfA-k6-n5r"/>
                 <outlet property="view" destination="1" id="TXw-ef-F97"/>
             </connections>
         </placeholder>
@@ -31,12 +32,25 @@
                         <outlet property="delegate" destination="-1" id="ctA-fx-90Q"/>
                     </connections>
                 </collectionView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fam-kZ-4dk">
+                    <rect key="frame" x="0.0" y="909" width="768" height="95"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="95" id="Kyf-G8-UgK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Baskerville-Bold" family="Baskerville" pointSize="48"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="Fam-kZ-4dk" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="AYq-sf-4k7"/>
                 <constraint firstItem="kbd-lx-pXk" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" symbolic="YES" id="VQB-Qd-KeQ"/>
                 <constraint firstItem="kbd-lx-pXk" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="buf-zH-CHq"/>
+                <constraint firstItem="Fam-kZ-4dk" firstAttribute="trailing" secondItem="kbd-lx-pXk" secondAttribute="trailing" id="eIb-3c-VA2"/>
                 <constraint firstAttribute="trailing" secondItem="kbd-lx-pXk" secondAttribute="trailing" id="l4K-TW-w9v"/>
+                <constraint firstAttribute="bottom" secondItem="Fam-kZ-4dk" secondAttribute="bottom" id="lDL-1B-Gie"/>
                 <constraint firstAttribute="bottom" secondItem="kbd-lx-pXk" secondAttribute="bottom" id="rqi-Nm-Sxg"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>

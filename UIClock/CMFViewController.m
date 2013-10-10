@@ -11,6 +11,7 @@
 
 @interface CMFViewController ()
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, weak) IBOutlet UILabel *timeLabel;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) CMFClockLayout *clockLayout;
 @end
@@ -29,6 +30,11 @@ static NSString *const kSecsHandCell = @"SecsHandCell";
 	// Do any additional setup after loading the view, typically from a nib.
     [self setupData];
     [self configureCollectionView];
+    [self updateClock];
+    
+    // Define the timer object
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateClock) userInfo:nil repeats:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,13 +43,21 @@ static NSString *const kSecsHandCell = @"SecsHandCell";
     // Dispose of any resources that can be recreated.
 }
 
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [self.collectionView.collectionViewLayout invalidateLayout];
+}
+
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+//    [self.collectionView.collectionViewLayout invalidateLayout];
+}
+
 #pragma mark -
 #pragma mark Setup methods
 
 -(void)setupData {
     
     NSMutableArray *hoursArray = [NSMutableArray arrayWithArray:@[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"11", @"12"]];
-    NSArray *handsArray = @[@"hours", @"minutes", @"seconds"];
+    NSArray *handsArray = @[@"hours", @"minutes", @"", @"seconds"];
     
     self.dataArray = [NSMutableArray arrayWithObjects:hoursArray, handsArray, nil];
     
@@ -58,7 +72,34 @@ static NSString *const kSecsHandCell = @"SecsHandCell";
     
     self.clockLayout = [[CMFClockLayout alloc] init];
     [self.clockLayout setLayoutCollectionView:self.collectionView];
+
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"hhmmss"];
+    NSDate *initialTime = [NSDate date];
+    [self.clockLayout setTime:initialTime];
+    
+    [self.clockLayout setHourHandSize:CGSizeMake(10, 300)];
+    [self.clockLayout setMinuteHandSize:CGSizeMake(10, 380)];
+    [self.clockLayout setSecondHandSize:CGSizeMake(4, 400)];
+    
     [self.collectionView setCollectionViewLayout:self.clockLayout];
+    
+}
+
+-(void)updateClock {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HHmmss"];
+    NSDate *currentTime = [NSDate date];
+    [self.clockLayout setTime:currentTime];
+
+    [self.collectionView.collectionViewLayout invalidateLayout];
+    
+    NSString *timeString = [formatter stringFromDate:currentTime];
+    NSString *hourString = [timeString substringWithRange:NSMakeRange(0, 2)];
+    NSString *minString = [timeString substringWithRange:NSMakeRange(2, 2)];
+    NSString *secString = [timeString substringWithRange:NSMakeRange(4, 2)];
+    
+    [self.timeLabel setText:[NSString stringWithFormat:@"%@:%@:%@", hourString, minString, secString]];
     
 }
 
@@ -72,7 +113,6 @@ static NSString *const kSecsHandCell = @"SecsHandCell";
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
     NSArray *innerArray = [self.dataArray objectAtIndex:section];
-    
     return [innerArray count];
     
 }
@@ -95,25 +135,17 @@ static NSString *const kSecsHandCell = @"SecsHandCell";
     
     if (indexPath.section == 1) {
         
-            switch (indexPath.row) {
-                case 0:
-                    // Handle hour hands
-                    cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kHourHandCell forIndexPath:indexPath];
-                    break;
-
-                case 1:
-                    // Handle minute hands
-                    cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kMinsHandCell forIndexPath:indexPath];
-                    break;
-
-                case 2:
-                    // Handle second hands
-                    cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kSecsHandCell forIndexPath:indexPath];
-                    break;
-
-                default:
-                    break;
-            }
+        if (indexPath.row == 0) {
+            cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kHourHandCell forIndexPath:indexPath];
+        }
+        
+        if (indexPath.row == 1) {
+            cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kMinsHandCell forIndexPath:indexPath];
+        }
+        
+        if (indexPath.row == 3) {
+            cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kSecsHandCell forIndexPath:indexPath];
+        }
 
     }
     

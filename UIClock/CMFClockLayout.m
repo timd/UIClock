@@ -7,10 +7,14 @@
 //
 
 #import "CMFClockLayout.h"
+#import "CMFClockViewAttributes.h"
 
 @interface CMFClockLayout ()
 @property (nonatomic) CGPoint cvCenter;
 @property (nonatomic) NSInteger hoursCount;
+@property (nonatomic) NSInteger timeHours;
+@property (nonatomic) NSInteger timeMinutes;
+@property (nonatomic) NSInteger timeSeconds;
 @end
 
 @implementation CMFClockLayout
@@ -23,9 +27,29 @@
     return self;
 }
 
++(Class)layoutAttributesClass {
+    return [CMFClockViewAttributes class];
+}
+
 -(void)prepareLayout {
     self.cvCenter = CGPointMake(self.layoutCollectionView.frame.size.width /2, self.layoutCollectionView.frame.size.height/2);
     self.hoursCount = [self.collectionView numberOfItemsInSection:0];
+    
+    NSDateFormatter *hoursFormatter = [[NSDateFormatter alloc] init];
+    [hoursFormatter setDateFormat:@"hh"];
+    NSString *hourString = [hoursFormatter stringFromDate:self.time];
+    self.timeHours = [hourString integerValue];
+    
+    NSDateFormatter *minsFormatter = [[NSDateFormatter alloc] init];
+    [minsFormatter setDateFormat:@"mm"];
+    NSString *minString = [minsFormatter stringFromDate:self.time];
+    self.timeMinutes = [minString integerValue];
+
+    NSDateFormatter *secsFormatter = [[NSDateFormatter alloc] init];
+    [secsFormatter setDateFormat:@"ss"];
+    NSString *secString = [secsFormatter stringFromDate:self.time];
+    self.timeSeconds = [secString integerValue];
+    
 }
 
 -(CGSize)collectionViewContentSize {
@@ -54,17 +78,60 @@
 
 -(UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+    CMFClockViewAttributes *attributes = [CMFClockViewAttributes layoutAttributesForCellWithIndexPath:indexPath];
     
     if (indexPath.section == 0) {
         // Handle hours labels
-        attributes.size = CGSizeMake(50.0f, 50.0f);
+        attributes.size = CGSizeMake(60.0f, 60.0f);
         attributes.center = [self calculatePositionForHourLabelWithIndexPath:indexPath];
-        
     }
     
     if (indexPath.section == 1) {
         // deal with hands
+        
+        float angularDisplacement;
+        float rotationPerHour = ((2*M_PI) / 12);
+        float rotationPerMinute = ((2*M_PI) / 60);
+        
+        switch (indexPath.row) {
+            case 0:
+//                // Handle hour hands
+                attributes.size = self.hourHandSize;
+                attributes.center = self.cvCenter;
+                
+                float intraHourRotationPerMinute = rotationPerHour / 60;
+                float currentIntraHourRotation = intraHourRotationPerMinute * self.timeMinutes;
+                angularDisplacement =  (rotationPerHour * self.timeHours) + currentIntraHourRotation;
+                
+                attributes.transform = CGAffineTransformMakeRotation(angularDisplacement);
+                break;
+
+            case 1:
+//                // Handle minute hands
+                attributes.size = self.minuteHandSize;
+                attributes.center = self.cvCenter;
+                
+                float intraMinuteRotationPerSecond = rotationPerMinute / 60;
+                float currentIntraMinuteRotation = intraMinuteRotationPerSecond * self.timeSeconds;
+                angularDisplacement =  (rotationPerMinute * self.timeMinutes) + currentIntraMinuteRotation;
+
+                attributes.transform = CGAffineTransformMakeRotation(angularDisplacement);
+                break;
+
+            case 3:
+                // Handle second hands
+                attributes.size = self.secondHandSize;
+                attributes.center = self.cvCenter;
+
+                angularDisplacement =  rotationPerMinute * self.timeSeconds;
+                attributes.transform = CGAffineTransformMakeRotation(angularDisplacement);
+
+                break;
+                
+            default:
+                break;
+        }
+        
     }
     
     return attributes;
