@@ -18,6 +18,10 @@
 @property (nonatomic) NSInteger timeSeconds;
 @end
 
+const float CMHourLabelCellWidth = 60.0f;
+const float CMHourLabelCellHeight = 60.0f;
+const float CMClockFaceRadius = 250.0f;
+
 @implementation CMFClockLayout
 
 #pragma mark -
@@ -134,18 +138,16 @@
 -(void)calculateAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     // Calculate the attributes for a given index path
-    
-    // Create a new set of attributes
-    CMFClockViewAttributes *attributes = [CMFClockViewAttributes layoutAttributesForCellWithIndexPath:indexPath];
+    CMFClockViewAttributes *attributes = nil;
     
     // Handle hours labels
     if (indexPath.section == 0) {
-        attributes = [self calculateAttributes:attributes forHourLabelWithIndexPath:indexPath];
+        attributes = [self calculateAttributesForHourLabelWithIndexPath:indexPath];
     }
 
     // deal with hands
     if (indexPath.section == 1) {
-        attributes = [self calculateAttributes:attributes forHandCellAtIndexPath:indexPath];
+        attributes = [self calculateAttributesForHandCellAtIndexPath:indexPath];
     }
     
     // Find the attributes objects with matching index path in the attributesArray
@@ -164,31 +166,33 @@
     
 }
 
--(CMFClockViewAttributes *)calculateAttributes:(CMFClockViewAttributes *)attributes forHourLabelWithIndexPath:(NSIndexPath *)indexPath {
+#pragma mark -
+#pragma mark Hour label calculations
+
+-(CMFClockViewAttributes *)calculateAttributesForHourLabelWithIndexPath:(NSIndexPath *)indexPath {
+    
+    CMFClockViewAttributes *attributes = [CMFClockViewAttributes layoutAttributesForCellWithIndexPath:indexPath];
     
     // Calculates the position of hour labels around the clock face
     // Handle hours labels
-    attributes.size = CGSizeMake(60.0f, 60.0f);
+    attributes.size = CGSizeMake(CMHourLabelCellWidth, CMHourLabelCellHeight);
     
     // Calculate angular displacement from zero degrees,
     // at 360 / 12 degrees per hour
     float angularDisplacement = (2 * M_PI) / self.hoursCount;
     
-    // Shift everything round clockwise by one hour so that
-    // 12 appears at the top of the clock, not 1
-    float initialDisplacement = angularDisplacement;
-    
     // Calculate current rotation
-    float theta = (angularDisplacement * indexPath.row) + initialDisplacement;
+    float theta = (angularDisplacement * indexPath.row);
     
     // Trig to calculate the x and 7 shifts required to
     // get the hours displayed around a circle of
     // diameter 250 points
-    float xDisplacement = sinf(theta) * 250;
-    float yDisplacement = cosf(theta) * 250;
+    float xDisplacement = sinf(theta) * CMClockFaceRadius;
+    float yDisplacement = cosf(theta) * CMClockFaceRadius;
     
     // Make the centre point of the hour label block
-    CGPoint center = CGPointMake(self.cvCenter.x + xDisplacement, self.cvCenter.y - yDisplacement);
+    CGPoint center = CGPointMake(self.cvCenter.x + xDisplacement,
+                                 self.cvCenter.y - yDisplacement);
     
     attributes.center = center;
     
@@ -196,9 +200,14 @@
     
 }
 
--(CMFClockViewAttributes *)calculateAttributes:(CMFClockViewAttributes *)attributes forHandCellAtIndexPath:(NSIndexPath *)indexPath {
+#pragma mark -
+#pragma mark Hand cell calculations
+
+-(CMFClockViewAttributes *)calculateAttributesForHandCellAtIndexPath:(NSIndexPath *)indexPath {
     
     // Calculate the position of the hands
+    
+    CMFClockViewAttributes *attributes = [CMFClockViewAttributes layoutAttributesForCellWithIndexPath:indexPath];
     
     float angularDisplacement;
     float rotationPerHour = ((2*M_PI) / 12);
@@ -213,7 +222,6 @@
             float intraHourRotationPerMinute = rotationPerHour / 60;
             float currentIntraHourRotation = intraHourRotationPerMinute * self.timeMinutes;
             angularDisplacement =  (rotationPerHour * self.timeHours) + currentIntraHourRotation;
-            
             attributes.transform = CGAffineTransformMakeRotation(angularDisplacement);
             break;
             
@@ -246,6 +254,9 @@
     return attributes;
     
 }
+
+#pragma mark -
+#pragma mark Placeholder methods
 
 -(void)calculateAttributesForSupplementaryViewOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     // Placeholder method
