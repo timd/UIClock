@@ -24,16 +24,18 @@
 #pragma mark -
 #pragma mark View lifecycle methods
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
+
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+    // Set up the data, configure the collection view and force
+    // it to display the current time
     [self setupData];
     [self configureCollectionView];
     [self updateClock];
     
-    // Start the timer
-    self.tickTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateClock) userInfo:nil repeats:YES];
+    // Start the timer to repeatedly update the layout
+    self.tickTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(updateClock) userInfo:nil repeats:YES];
     
 }
 
@@ -84,7 +86,6 @@
     [self.collectionView registerClass:[CMFHandsCell class] forCellWithReuseIdentifier:CMSecsHandCell];
     
     self.clockLayout = [[CMFClockLayout alloc] init];
-    [self.clockLayout setLayoutCollectionView:self.collectionView];
 
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"hhmmss"];
@@ -115,7 +116,6 @@
     NSString *secString = [timeString substringWithRange:NSMakeRange(4, 2)];
     
     [self.timeLabel setText:[NSString stringWithFormat:@"%@:%@:%@", hourString, minString, secString]];
-    
 }
 
 #pragma mark -

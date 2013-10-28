@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface CMFClockLayout : UICollectionViewLayout
+
 @property (nonatomic, strong) NSDate *time;
-@property (nonatomic, weak) UICollectionView *layoutCollectionView;
 
 @property (nonatomic) CGSize secondHandSize;
 @property (nonatomic) CGSize minuteHandSize;

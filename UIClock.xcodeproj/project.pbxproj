@@ -23,7 +23,6 @@
 		229FA7F81806A82300788E00 /* CMFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229FA7F71806A82300788E00 /* CMFViewController.xib */; };
 		229FA8011806AABB00788E00 /* CMFHourLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229FA8001806AABB00788E00 /* CMFHourLabelView.xib */; };
 		229FA8051806AC4300788E00 /* CMFClockLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 229FA8041806AC4300788E00 /* CMFClockLayout.m */; };
-		229FA8081806E0BE00788E00 /* CMFClockViewAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 229FA8071806E0BE00788E00 /* CMFClockViewAttributes.m */; };
 		22FB3992181D171600CF118E /* CMFHandsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FB3991181D171600CF118E /* CMFHandsCell.m */; };
 		22FB3996181D183900CF118E /* UIClockConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FB3995181D183900CF118E /* UIClockConfig.m */; };
 		22FB39A8181D6FFF00CF118E /* blackHour@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FB39A4181D6FFF00CF118E /* blackHour@2x.png */; };
@@ -32,6 +31,7 @@
 		22FB39AC181D70DE00CF118E /* blackHour.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FB39AB181D70DE00CF118E /* blackHour.png */; };
 		22FB39AF181D742700CF118E /* blackSecond.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FB39AD181D742700CF118E /* blackSecond.png */; };
 		22FB39B0181D742700CF118E /* blackSecond@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FB39AE181D742700CF118E /* blackSecond@2x.png */; };
+		22FB39B2181D766C00CF118E /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FB39B1181D766C00CF118E /* View.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,8 +67,6 @@
 		229FA8001806AABB00788E00 /* CMFHourLabelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMFHourLabelView.xib; sourceTree = "<group>"; };
 		229FA8031806AC4300788E00 /* CMFClockLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMFClockLayout.h; sourceTree = "<group>"; };
 		229FA8041806AC4300788E00 /* CMFClockLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMFClockLayout.m; sourceTree = "<group>"; };
-		229FA8061806E0BE00788E00 /* CMFClockViewAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMFClockViewAttributes.h; sourceTree = "<group>"; };
-		229FA8071806E0BE00788E00 /* CMFClockViewAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMFClockViewAttributes.m; sourceTree = "<group>"; };
 		22FB3990181D171600CF118E /* CMFHandsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMFHandsCell.h; sourceTree = "<group>"; };
 		22FB3991181D171600CF118E /* CMFHandsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMFHandsCell.m; sourceTree = "<group>"; };
 		22FB3994181D183900CF118E /* UIClockConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIClockConfig.h; sourceTree = "<group>"; };
@@ -79,6 +77,7 @@
 		22FB39AB181D70DE00CF118E /* blackHour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackHour.png; sourceTree = "<group>"; };
 		22FB39AD181D742700CF118E /* blackSecond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackSecond.png; sourceTree = "<group>"; };
 		22FB39AE181D742700CF118E /* blackSecond@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackSecond@2x.png"; sourceTree = "<group>"; };
+		22FB39B1181D766C00CF118E /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,8 +200,6 @@
 			children = (
 				229FA8031806AC4300788E00 /* CMFClockLayout.h */,
 				229FA8041806AC4300788E00 /* CMFClockLayout.m */,
-				229FA8061806E0BE00788E00 /* CMFClockViewAttributes.h */,
-				229FA8071806E0BE00788E00 /* CMFClockViewAttributes.m */,
 				22FB398F181D16FA00CF118E /* Cell classes */,
 				229FA8021806AC3200788E00 /* Nibs */,
 			);
@@ -219,6 +216,7 @@
 				22FB39AD181D742700CF118E /* blackSecond.png */,
 				22FB39AE181D742700CF118E /* blackSecond@2x.png */,
 				229FA8001806AABB00788E00 /* CMFHourLabelView.xib */,
+				22FB39B1181D766C00CF118E /* View.xib */,
 			);
 			name = Nibs;
 			sourceTree = "<group>";
@@ -318,6 +316,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22FB39B2181D766C00CF118E /* View.xib in Resources */,
 				229FA7D91806A7D400788E00 /* Images.xcassets in Resources */,
 				22FB39A8181D6FFF00CF118E /* blackHour@2x.png in Resources */,
 				22FB39AA181D6FFF00CF118E /* blackMinute@2x.png in Resources */,
@@ -348,7 +347,6 @@
 			files = (
 				229FA7CD1806A7D400788E00 /* main.m in Sources */,
 				22FB3996181D183900CF118E /* UIClockConfig.m in Sources */,
-				229FA8081806E0BE00788E00 /* CMFClockViewAttributes.m in Sources */,
 				229FA7D71806A7D400788E00 /* CMFViewController.m in Sources */,
 				229FA7D11806A7D400788E00 /* CMFAppDelegate.m in Sources */,
 				229FA8051806AC4300788E00 /* CMFClockLayout.m in Sources */,

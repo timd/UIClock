@@ -7,7 +7,6 @@
 //
 
 #import "CMFClockLayout.h"
-#import "CMFClockViewAttributes.h"
 
 @interface CMFClockLayout ()
 @property (nonatomic, strong) NSMutableArray *attributesArray;
@@ -36,17 +35,13 @@ const float CMClockFaceRadius = 250.0f;
     return self;
 }
 
-+(Class)layoutAttributesClass {
-    return [CMFClockViewAttributes class];
-}
-
 #pragma mark -
 #pragma mark UICollectionViewLayout methods
 
 -(void)prepareLayout {
 
     // Layout dimensions calculations
-    self.cvCenter = CGPointMake(self.layoutCollectionView.frame.size.width /2, self.layoutCollectionView.frame.size.height/2);
+    self.cvCenter = CGPointMake(self.collectionView.frame.size.width /2, self.collectionView.frame.size.height/2);
     self.hoursCount = [self.collectionView numberOfItemsInSection:0];
 
     // Extract the current time settings from the time property
@@ -77,7 +72,7 @@ const float CMClockFaceRadius = 250.0f;
 
 -(CGSize)collectionViewContentSize {
     // Content size is the same as the collection view size
-    return self.layoutCollectionView.frame.size;
+    return self.collectionView.frame.size;
 }
 
 -(NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
@@ -88,7 +83,7 @@ const float CMClockFaceRadius = 250.0f;
 -(UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     // Find the attribute in the attributesArray with the corresponding indexPath
-    NSInteger index = [self.attributesArray indexOfObjectPassingTest:^BOOL(CMFClockViewAttributes *attributes, NSUInteger idx, BOOL *stop) {
+    NSInteger index = [self.attributesArray indexOfObjectPassingTest:^BOOL(UICollectionViewLayoutAttributes *attributes, NSUInteger idx, BOOL *stop) {
         NSComparisonResult result = [attributes.indexPath compare:indexPath];
         return (result == NSOrderedSame);
     }];
@@ -138,7 +133,7 @@ const float CMClockFaceRadius = 250.0f;
 -(void)calculateAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     // Calculate the attributes for a given index path
-    CMFClockViewAttributes *attributes = nil;
+    UICollectionViewLayoutAttributes *attributes = nil;
     
     // Handle hours labels
     if (indexPath.section == 0) {
@@ -151,7 +146,7 @@ const float CMClockFaceRadius = 250.0f;
     }
     
     // Find the attributes objects with matching index path in the attributesArray
-    NSInteger index = [self.attributesArray indexOfObjectPassingTest:^BOOL(CMFClockViewAttributes *attributes, NSUInteger idx, BOOL *stop) {
+    NSInteger index = [self.attributesArray indexOfObjectPassingTest:^BOOL(UICollectionViewLayoutAttributes *attributes, NSUInteger idx, BOOL *stop) {
         NSComparisonResult result = [attributes.indexPath compare:indexPath];
         return (result == NSOrderedSame);
     }];
@@ -169,9 +164,9 @@ const float CMClockFaceRadius = 250.0f;
 #pragma mark -
 #pragma mark Hour label calculations
 
--(CMFClockViewAttributes *)calculateAttributesForHourLabelWithIndexPath:(NSIndexPath *)indexPath {
+-(UICollectionViewLayoutAttributes *)calculateAttributesForHourLabelWithIndexPath:(NSIndexPath *)indexPath {
     
-    CMFClockViewAttributes *attributes = [CMFClockViewAttributes layoutAttributesForCellWithIndexPath:indexPath];
+    UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     
     // Calculates the position of hour labels around the clock face
     // Handle hours labels
@@ -203,11 +198,10 @@ const float CMClockFaceRadius = 250.0f;
 #pragma mark -
 #pragma mark Hand cell calculations
 
--(CMFClockViewAttributes *)calculateAttributesForHandCellAtIndexPath:(NSIndexPath *)indexPath {
+-(UICollectionViewLayoutAttributes *)calculateAttributesForHandCellAtIndexPath:(NSIndexPath *)indexPath {
     
     // Calculate the position of the hands
-    
-    CMFClockViewAttributes *attributes = [CMFClockViewAttributes layoutAttributesForCellWithIndexPath:indexPath];
+    UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     
     float angularDisplacement;
     float rotationPerHour = ((2*M_PI) / 12);
