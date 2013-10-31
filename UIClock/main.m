@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import "CMFAppDelegate.h"
+#import "UIClockAppDelegate.h"
 
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([CMFAppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([UIClockAppDelegate class]));
     }
 }

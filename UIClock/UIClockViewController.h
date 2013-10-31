@@ -1,5 +1,5 @@
 //
-//  CMFViewController.h
+//  UIClockViewController.h
 //  UIClock
 //
 //  Created by Tim on 10/10/2013.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CMFViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface UIClockViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @end

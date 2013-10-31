@@ -8,10 +8,10 @@
 
 #import "UIClockConfig.h"
 
-NSString *const CMHourCellView = @"HourCellView";
-NSString *const CMHourHandCell = @"HourHandCell";
-NSString *const CMMinsHandCell = @"MinsHandCell";
-NSString *const CMSecsHandCell = @"SecsHandCell";
+NSString *const UIClockHourCellView = @"HourCellView";
+NSString *const UIClockHourHandCell = @"HourHandCell";
+NSString *const UIClockMinsHandCell = @"MinsHandCell";
+NSString *const UIClockSecsHandCell = @"SecsHandCell";
 
 @implementation UIClockConfig
 

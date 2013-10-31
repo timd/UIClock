@@ -1,20 +1,20 @@
 //
-//  CMFAppDelegate.m
+//  UIClockAppDelegate.m
 //  UIClock
 //
 //  Created by Tim on 10/10/2013.
 //  Copyright (c) 2013 Charismatic Megafauna Ltd. All rights reserved.
 //
 
-#import "CMFAppDelegate.h"
-#import "CMFViewController.h"
+#import "UIClockAppDelegate.h"
+#import "UIClockViewController.h"
 
-@implementation CMFAppDelegate
+@implementation UIClockAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         // Override point for customization after application launch.
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        CMFViewController *viewController = [[CMFViewController alloc] initWithNibName:@"CMFViewController" bundle:nil];
+        UIClockViewController *viewController = [[UIClockViewController alloc] initWithNibName:@"UIClockViewController" bundle:nil];
         self.window.rootViewController = viewController;
         [self.window makeKeyAndVisible];
         return YES;

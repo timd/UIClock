@@ -1,25 +1,25 @@
 //
-//  CMFViewController.m
+//  UIClockViewController.m
 //  UIClock
 //
 //  Created by Tim on 10/10/2013.
 //  Copyright (c) 2013 Charismatic Megafauna Ltd. All rights reserved.
 //
 
-#import "CMFViewController.h"
+#import "UIClockViewController.h"
 #import "UIClockConfig.h"
-#import "CMFClockLayout.h"
-#import "CMFHandsCell.h"
+#import "UIClockLayout.h"
+#import "UIClockHandsCell.h"
 
-@interface CMFViewController ()
+@interface UIClockViewController ()
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSTimer *tickTimer;
 @property (nonatomic, weak) IBOutlet UILabel *timeLabel;
 @property (nonatomic, strong) NSMutableArray *dataArray;
-@property (nonatomic, strong) CMFClockLayout *clockLayout;
+@property (nonatomic, strong) UIClockLayout *clockLayout;
 @end
 
-@implementation CMFViewController
+@implementation UIClockViewController
 
 #pragma mark -
 #pragma mark View lifecycle methods
@@ -80,12 +80,12 @@
 
 -(void)configureCollectionView {
 
-    [self.collectionView registerNib:[UINib nibWithNibName:@"CMFHourLabelView" bundle:nil] forCellWithReuseIdentifier:CMHourCellView];
-    [self.collectionView registerClass:[CMFHandsCell class] forCellWithReuseIdentifier:CMHourHandCell];
-    [self.collectionView registerClass:[CMFHandsCell class] forCellWithReuseIdentifier:CMMinsHandCell];
-    [self.collectionView registerClass:[CMFHandsCell class] forCellWithReuseIdentifier:CMSecsHandCell];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"UIClockHourLabelView" bundle:nil] forCellWithReuseIdentifier:UIClockHourCellView];
+    [self.collectionView registerClass:[UIClockHandsCell class] forCellWithReuseIdentifier:UIClockHourHandCell];
+    [self.collectionView registerClass:[UIClockHandsCell class] forCellWithReuseIdentifier:UIClockMinsHandCell];
+    [self.collectionView registerClass:[UIClockHandsCell class] forCellWithReuseIdentifier:UIClockSecsHandCell];
     
-    self.clockLayout = [[CMFClockLayout alloc] init];
+    self.clockLayout = [[UIClockLayout alloc] init];
 
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"hhmmss"];
@@ -138,7 +138,7 @@
     
     if (indexPath.section == 0) {
         // Handle time labels
-        cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:CMHourCellView forIndexPath:indexPath];
+        cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:UIClockHourCellView forIndexPath:indexPath];
         
         NSArray *hoursLabelsArray = [self.dataArray objectAtIndex:0];
         NSString *hoursText = [hoursLabelsArray objectAtIndex:indexPath.row];
@@ -151,22 +151,22 @@
     if (indexPath.section == 1) {
         
         if (indexPath.row == 0) {
-            cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:CMHourHandCell forIndexPath:indexPath];
-            UIImageView *hourImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blackHour"]];
+            cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:UIClockHourHandCell forIndexPath:indexPath];
+            UIImageView *hourImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hourHand"]];
             [cell.contentView addSubview:hourImageView];
             [cell.layer setAnchorPoint:CGPointMake(0.5f, 0.9f)];
         }
         
         if (indexPath.row == 1) {
-            cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:CMMinsHandCell forIndexPath:indexPath];
-            UIImageView *minsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blackMinute"]];
+            cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:UIClockMinsHandCell forIndexPath:indexPath];
+            UIImageView *minsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"minuteHand"]];
             [cell.contentView addSubview:minsImageView];
             [cell.layer setAnchorPoint:CGPointMake(0.5f, 0.937f)];
         }
         
         if (indexPath.row == 3) {
-            cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:CMSecsHandCell forIndexPath:indexPath];
-            UIImageView *minsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blackSecond"]];
+            cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:UIClockSecsHandCell forIndexPath:indexPath];
+            UIImageView *minsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"secondHand"]];
             [cell.contentView addSubview:minsImageView];
             [cell.layer setAnchorPoint:CGPointMake(0.5f, 0.972f)];
         }

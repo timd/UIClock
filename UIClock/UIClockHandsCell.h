@@ -1,5 +1,5 @@
 //
-//  CMFHandsCell.h
+//  UIClockHandsCell.h
 //  UIClock
 //
 //  Created by Tim on 27/10/2013.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CMFHandsCell : UICollectionViewCell
+@interface UIClockHandsCell : UICollectionViewCell
 
 @end

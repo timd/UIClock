@@ -1,14 +1,14 @@
 //
-//  CMFClockLayout.m
+//  UIClockClockLayout.m
 //  UIClock
 //
 //  Created by Tim on 10/10/2013.
 //  Copyright (c) 2013 Charismatic Megafauna Ltd. All rights reserved.
 //
 
-#import "CMFClockLayout.h"
+#import "UIClockLayout.h"
 
-@interface CMFClockLayout ()
+@interface UIClockLayout ()
 @property (nonatomic, strong) NSMutableArray *attributesArray;
 @property (nonatomic) CGPoint cvCenter;
 @property (nonatomic) NSInteger hoursCount;
@@ -17,11 +17,11 @@
 @property (nonatomic) NSInteger timeSeconds;
 @end
 
-const float CMHourLabelCellWidth = 60.0f;
-const float CMHourLabelCellHeight = 60.0f;
-const float CMClockFaceRadius = 250.0f;
+const float UIClockHourLabelCellWidth = 60.0f;
+const float UIClockHourLabelCellHeight = 60.0f;
+const float UIClockClockFaceRadius = 250.0f;
 
-@implementation CMFClockLayout
+@implementation UIClockLayout
 
 #pragma mark -
 #pragma mark Object lifecycle
@@ -170,7 +170,7 @@ const float CMClockFaceRadius = 250.0f;
     
     // Calculates the position of hour labels around the clock face
     // Handle hours labels
-    attributes.size = CGSizeMake(CMHourLabelCellWidth, CMHourLabelCellHeight);
+    attributes.size = CGSizeMake(UIClockHourLabelCellWidth, UIClockHourLabelCellHeight);
     
     // Calculate angular displacement from zero degrees,
     // at 360 / 12 degrees per hour
@@ -182,8 +182,8 @@ const float CMClockFaceRadius = 250.0f;
     // Trig to calculate the x and 7 shifts required to
     // get the hours displayed around a circle of
     // diameter 250 points
-    float xDisplacement = sinf(theta) * CMClockFaceRadius;
-    float yDisplacement = cosf(theta) * CMClockFaceRadius;
+    float xDisplacement = sinf(theta) * UIClockClockFaceRadius;
+    float yDisplacement = cosf(theta) * UIClockClockFaceRadius;
     
     // Make the centre point of the hour label block
     CGPoint center = CGPointMake(self.cvCenter.x + xDisplacement,

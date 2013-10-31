@@ -1,5 +1,5 @@
 //
-//  CMFAppDelegate.h
+//  UIClockAppDelegate.h
 //  UIClock
 //
 //  Created by Tim on 10/10/2013.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CMFAppDelegate : UIResponder <UIApplicationDelegate>
+@interface UIClockAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

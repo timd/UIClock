@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *const CMHourCellView;
-extern NSString *const CMHourHandCell;
-extern NSString *const CMMinsHandCell;
-extern NSString *const CMSecsHandCell;
+extern NSString *const UIClockHourCellView;
+extern NSString *const UIClockHourHandCell;
+extern NSString *const UIClockMinsHandCell;
+extern NSString *const UIClockSecsHandCell;
 
 @interface UIClockConfig : NSObject
 
