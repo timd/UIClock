@@ -7,6 +7,8 @@ This is an example project showing an implementation of a `UICollectionView` cus
 
 This app is an iPad-based single-view project, and displays a working analogue clock as a `UICollectionView` with a custom layout.
 
+![Screenshot](https://raw.github.com/timd/UIClock/master/screenshot-after.png)
+
 ### Architecture
 
 The collection view is managed by a single view controller (`ClockViewController`) with a separate class (`CollectionViewSupport`) acting as data source and delegate.
