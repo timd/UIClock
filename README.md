@@ -11,7 +11,7 @@ This app is an iPad-based single-view project, and displays a working analogue c
 
 ### Architecture
 
-The collection view is managed by a single view controller (`ClockViewController`) with a separate class (`CollectionViewSupport`) acting as data source and delegate.
+The collection view is managed by a single view controller (`ClockViewController`) that also acts as data source and delegate.
 
 The data model consists of an `NSArray` with two elements, each themselves containing an `NSArray`. At index path `0` the array contains twelve elements containing `NSStrings` that act as labels for the clock face's numerals.
 
