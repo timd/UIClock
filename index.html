@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>UIClock by timd</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>UIClock</h1>
+        <p>UICollectionView-based clock for iPad</p>
+
+        <p class="view"><a href="https://github.com/timd/UIClock">View the Project on GitHub <small>timd/UIClock</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/timd/UIClock/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/timd/UIClock/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/timd/UIClock">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="uiclock" class="anchor" href="#uiclock"><span class="octicon octicon-link"></span></a>UIClock</h1>
+
+<p>This is an example project showing an implementation of a <code>UICollectionView</code> custom layout.  Being the beginnings of a worked example for "Pro UITableView &amp; UICollectionView" which I'm supposed to be writing RIGHT NOW...</p>
+
+<h3>
+<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h3>
+
+<p>This app is an iPad-based single-view project, and displays a working analogue clock as a <code>UICollectionView</code> with a custom layout.</p>
+
+<p><img src="https://github.com/timd/UIClock/blob/master/screenshot-after.png" alt='"After" screenshot'></p>
+
+<h3>
+<a name="architecture" class="anchor" href="#architecture"><span class="octicon octicon-link"></span></a>Architecture</h3>
+
+<p>The collection view is managed by a single view controller (<code>ClockViewController</code>) with a separate class (<code>CollectionViewSupport</code>) acting as data source and delegate.</p>
+
+<p>The data model consists of an <code>NSArray</code> with two elements, each themselves containing an <code>NSArray</code>. At index path <code>0</code> the array contains twelve elements containing <code>NSStrings</code> that act as labels for the clock face's numerals.</p>
+
+<p>At index path <code>1</code>, there are three elements containing <code>NSStrings</code> that act as markers for the hour, minutes and second hands.  The presence of an element will cause the collection view to attempt to display the hands (ie removing the "seconds" element will suppress the display of the seconds hand).</p>
+
+<p>The clock face's numerals are displayed in views derived from the <code>HourLabelView.xib</code>, while the hands are created as custom subclasses of <code>UICollectionViewCell</code> into which a <code>UIImageView</code> containing the hand image is inserted.</p>
+
+<p>The collection view layout should be self-explanatory - the two main methods are <code>calculateAttributesForHourLabelAtIndexPath:</code> and <code>calculateAttributesForHandCellAtIndexPath:</code>.  These calculate the position and/or transform required for each numeral or hand based on the rotation derived from the time value passed into the layout.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/timd">timd</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
